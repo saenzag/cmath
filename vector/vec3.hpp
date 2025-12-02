@@ -30,6 +30,12 @@ namespace cmath{
 
   }; // !Vector3
 
+    // Types
+  typedef Vec3<int> Vec3i;
+  typedef Vec3<unsigned int> Vec3u;
+  typedef Vec3<float> Vec3f;
+  typedef Vec3<double> Vec3d;
+
 } // !namespace cmath
 
 #endif // !#define __CMATH_VEC3_H__ 1
