@@ -13,7 +13,7 @@ namespace cmath{
     ~Vec2() = default;
 
     T& operator[](int i) {return a[i];}
-    const T& operator[](int i) {return a[i];}
+    const T& operator[](int i) const {return a[i];}
 
   //////////////////////
   //     OPERATOR     //
