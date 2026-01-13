@@ -22,14 +22,29 @@ struct Mat4
 	};
   
 
-	Mat4() : data{	T(0), T(0), T(0), T(0),
-					T(0), T(0), T(0), T(0),
-					T(0), T(0), T(0), T(0),
-					T(0), T(0), T(0), T(0)}
+	Mat4() : data{	
+								T(0), T(0), T(0), T(0),
+								T(0), T(0), T(0), T(0),
+								T(0), T(0), T(0), T(0),
+								T(0), T(0), T(0), T(0)
+							}
     {
     }
 
 };
+
+template<typename T>
+static Mat4<T> Identity()
+{
+	Mat4<T> result;
+
+	result.m00 = T(1);
+	result.m11 = T(1);
+	result.m22 = T(1);
+	result.m33 = T(1);
+
+	return result;
+}
 
 template<typename T>
 static Mat4<T> Ortho(T left, T right, T bottom, T top, T nearVal, T farVal)
@@ -48,6 +63,10 @@ static Mat4<T> Ortho(T left, T right, T bottom, T top, T nearVal, T farVal)
 
 	return result;
 }
+
+typedef Mat4<float> Mat4f;
+typedef Mat4<double> Mat4d;
+
 } // namespace cmath
 
 #endif // __CMATH_MAT4_HPP__
