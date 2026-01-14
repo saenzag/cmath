@@ -7,8 +7,6 @@ namespace cmath {
 template<typename T>
 struct Mat4
 {
-	static_assert(sizeof(Mat4<T>) == 16 * sizeof(T), "Mat4 size incorrect");
-
 	union
 	{
 		T data[16];
@@ -66,6 +64,10 @@ static Mat4<T> Ortho(T left, T right, T bottom, T top, T nearVal, T farVal)
 
 typedef Mat4<float> Mat4f;
 typedef Mat4<double> Mat4d;
+
+static_assert(sizeof(Mat4f) == 16 * sizeof(float), "Mat4 size incorrect");
+static_assert(sizeof(Mat4d) == 16 * sizeof(double), "Mat4 size incorrect");
+
 
 } // namespace cmath
 
