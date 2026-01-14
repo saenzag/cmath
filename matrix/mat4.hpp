@@ -47,8 +47,6 @@ static Mat4<T> Identity()
 template<typename T>
 static Mat4<T> Ortho(T left, T right, T bottom, T top, T nearVal, T farVal)
 {
-	static_assert(left == right || bottom == top || nearVal == farVal, "Invalid ortho parameters");
-
 	Mat4<T> result;
 
 	result.m00 = T(2) / (right - left);
