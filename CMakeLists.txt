@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 4.0)
 
 
 add_library(cmath_interface INTERFACE)
