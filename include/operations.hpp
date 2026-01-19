@@ -56,6 +56,46 @@ namespace cmath {
         return result;
     }
 
+    template<typename T, typename U>
+    Mat4<T> LookAt(const Vec3<T>& eye, const Vec3<T>& center, const Vec3<T>& up)
+    {
+        Vec3<T> f = (center - eye).Normalized();
+        Vec3<T> s = Cross(f, up).Normalized();
+        Vec3<T> u = Cross(s, f);
+
+        Mat4<T> result = Identity<T>();
+        result.m00 = s.x;
+        result.m01 = s.y;
+        result.m02 = s.z;
+        result.m10 = u.x;
+        result.m11 = u.y;
+        result.m12 = u.z;
+        result.m20 = -f.x;
+        result.m21 = -f.y;
+        result.m22 = -f.z;
+        result.m03 = -Dot(s, eye);
+        result.m13 = -Dot(u, eye);
+        result.m23 = Dot(f, eye);
+
+        return result;
+    }
+
+    template<typename T>
+    Mat4<T> Perspective(float fov, float aspect, float near, float far)
+    {
+        Mat4<T> result;
+        float tanHalfFov = tan(fov / 2.0f);
+
+        result.m00 = 1.0f / (aspect * tanHalfFov);
+        result.m11 = 1.0f / (tanHalfFov);
+        result.m22 = -(far + near) / (far - near);
+        result.m23 = -(2.0f * far * near) / (far - near);
+        result.m32 = -1.0f;
+        result.m33 = 0.0f;
+
+        return result;
+    }
+
 };
 
 #endif // __CMATH_OPERATIONS_HPP__
